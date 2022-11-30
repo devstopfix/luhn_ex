@@ -20,7 +20,7 @@ defmodule Luhn do
       true
 
       # Works with Hexadecimal as well
-      iex(3)> Luhn.valid?(0x1580BB2EA8875, 16)
+      iex(3)> Luhn.valid?("1580BB2EA8875A", 16)
       true
   """
   @spec valid?(number :: integer | String.t, base :: integer) :: boolean
