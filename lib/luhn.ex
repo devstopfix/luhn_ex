@@ -82,7 +82,7 @@ defmodule Luhn do
     n <> to_string(check_digit)
   end
 
-  @doc falseß
+  @doc false
   @spec double([integer, ...], integer, integer) :: integer
   def double([], _, acc), do: acc
   def double([x], _, acc), do: x + acc
