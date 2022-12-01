@@ -19,9 +19,6 @@ defmodule Luhn do
       iex(2)> Luhn.valid?(378282246310005)
       true
 
-      # Works with Hexadecimal as well
-      iex(3)> Luhn.valid?("1580BB2EA8875A", 16)
-      true
   """
   @spec valid?(number :: integer | String.t, base :: integer) :: boolean
   def valid?(number, base \\ 10) when valid_base(base) do
