@@ -29,6 +29,15 @@ defmodule Luhn do
     |> Kernel.==(0)
   end
 
+  @doc """
+  Calculate the checksum of a number.
+
+  This is known as the "mod 10" algorithm and the result will be zero if the
+  check digit suffix is valid for the number.
+
+      iex> Luhn.checksum("79927398713")
+      0
+  """
   def checksum(number, base \\ 10)
 
   @spec checksum(binary, integer) :: integer
@@ -47,6 +56,7 @@ defmodule Luhn do
     |> rem(base)
   end
 
+  @doc false
   @spec double([integer, ...], integer, integer) :: integer
   def double([], _, acc), do: acc
   def double([x], _, acc), do: x + acc
