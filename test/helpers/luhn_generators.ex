@@ -28,6 +28,9 @@ defmodule Luhn.Generators do
   @doc "Octal digit (base 8)"
   def octal_digit, do: digits(8)
 
+  @doc "Hexadecimal digit (base 16)"
+  def hexadecimal_digit, do: digits(16)
+
   @doc "Non-zero digit"
   def nz_digit(gen), do: such_that(d <- gen, when: d != ?0)
 

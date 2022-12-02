@@ -64,25 +64,27 @@ defmodule Luhn.CheckTest do
       end
     end
 
-    property "generates valid check digit in base 10" do
-      forall n <- numeric_10() do
-        check = Luhn.compute_check_digit(n)
-        assert Luhn.valid?(n <> to_string(check))
-      end
-    end
   end
 
   describe "Luhn.append_check_digit/1" do
-    property "appends valid check digit in base 10" do
-      forall n <- numeric_10() do
-        n_checked = Luhn.append_check_digit(n)
-        assert Luhn.valid?(n_checked)
+    property "appends valid check digit in any base" do
+      forall {n, base} <- numeric_in_base() do
+        n_checked = Luhn.append_check_digit(n, base)
+        assert Luhn.valid?(n_checked, base)
       end
     end
 
     property "appends valid check digit octal" do
       base = 8
       forall n <- numeric(octal_digit()) do
+        n_checked = Luhn.append_check_digit(n, base)
+        assert Luhn.valid?(n_checked, base)
+      end
+    end
+
+    property "appends valid check digit hexadecimal" do
+      base = 16
+      forall n <- numeric(hexadecimal_digit()) do
         n_checked = Luhn.append_check_digit(n, base)
         assert Luhn.valid?(n_checked, base)
       end
