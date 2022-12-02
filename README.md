@@ -45,6 +45,10 @@ Luhn.valid? 378282246310005
 # Compute check digit
 Luhn.compute_check_digit("37828224631000")
 # => 5
+
+# Append check digit
+Luhn.append_check_digit("37828224631000") 
+"378282246310005"
 ```
 
 ## Benchmarking
