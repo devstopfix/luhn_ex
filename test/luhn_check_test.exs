@@ -70,6 +70,7 @@ defmodule Luhn.CheckTest do
     property "appends valid check digit in any base" do
       forall {n, base} <- numeric_in_base() do
         n_checked = Luhn.append_check_digit(n, base)
+        assert n_checked != n
         assert Luhn.valid?(n_checked, base)
       end
     end
@@ -94,6 +95,13 @@ defmodule Luhn.CheckTest do
       forall {n, base} <- numeric_in_base() do
         n_checked = Luhn.append_check_digit(n, base)
         assert String.length(n_checked) == (String.length(n) + 1)
+      end
+    end
+
+    property "appends" do
+      forall {n, base} <- numeric_in_base() do
+        n_checked = Luhn.append_check_digit(n, base)
+        assert String.starts_with?(n_checked, n)
       end
     end
   end
