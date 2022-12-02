@@ -83,7 +83,7 @@ defmodule Luhn do
       "79927398713"
   """
   @spec append_check_digit(binary, pos_integer) :: binary
-  def append_check_digit(n, base \\ 10) do
+  def append_check_digit(n, base \\ 10) when is_binary(n) do
     check_digit = Algorithm.compute_check_digit(n, base)
     n <> Integer.to_string(check_digit, base)
   end
