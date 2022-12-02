@@ -34,8 +34,7 @@ defmodule Luhn do
   """
   @spec valid?(number :: integer | String.t, base :: integer) :: boolean
   def valid?(number, base \\ 10) when valid_base(base) do
-    checksum(number, base)
-    |> Kernel.==(0)
+    checksum(number, base) == 0
   end
 
   @doc """
