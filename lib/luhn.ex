@@ -15,7 +15,6 @@ defmodule Luhn do
   @doc """
   Evaluates a given credit card number for its validity, with an optionally provided base.
 
-  # Examples
       # Accepts a string
       iex(1)> Luhn.valid?("378282246310005")
       true
@@ -26,6 +25,10 @@ defmodule Luhn do
 
       # Octal
       iex(3)> Luhn.valid?("11111115", 8)
+      true
+
+      # Hexadecimal
+      iex(4)> Luhn.valid?("1580BB2EA887B", 16)
       true
 
   """
