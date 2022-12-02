@@ -38,6 +38,13 @@ defmodule Luhn.CheckTest do
       end
     end
 
+    property "same result for binary and integer" do
+      forall {n_binary, base} <- numeric_in_base() do
+        n_number = String.to_integer(n_binary, base)
+        assert Luhn.valid?(n_binary, base) == Luhn.valid?(n_number, base)
+      end
+    end
+
     property "detects single digit errors" do
       forall {n, n_corrupt} <- single_digit_error(good_number()) do
         assert n != n_corrupt
